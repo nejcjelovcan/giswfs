@@ -1,0 +1,644 @@
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+
+<html>
+<head>
+	<title>Geoportal ARSO</title>
+    
+
+
+
+
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.5/js/dojo/dijit/themes/tundra/tundra.css" />
+<link rel="stylesheet" type="text/css" href="/geoportal/catalog/skins/themes/blue/main.css"  />
+<link rel="stylesheet" type="text/css" href="/geoportal/catalog/skins/themes/blue/preview.css"  />
+<link rel="icon" type="image/x-icon"   href="/geoportal/catalog/images/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="/geoportal/catalog/images/favicon.ico" />
+
+<script type="text/javascript">
+  djConfig = {parseOnLoad: true, locale: 'en'};
+</script>
+<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
+<script type="text/javascript">
+  esri.config.defaults.io.proxyUrl = "/geoportal/catalog/download/proxy.jsp";
+</script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1/GPTMapViewer.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1/jquery-1.2.3.pack.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1/ui.datepicker.packed.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1.2/gpt.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1/Utils.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1.2.1/livedata.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1/gpt-asn.js"></script>
+<script type="text/javascript" src="/geoportal/catalog/js/v1.2.2/gpt-browse.js"></script>
+
+
+	
+
+
+
+
+
+<script type="text/javascript" language="javascript">/* Component id = cmPlGptMvsUrl*/var mainGptMvsUrl = "";</script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="search" type="application/opensearchdescription+xml" 
+  title="Geoportalno iskanje"
+  href="/geoportal/openSearchDescription" />
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#cmPlPgpGptMessages span").each(function (i) {
+		var htmlStr = $(this).html();
+		$(this).html(htmlStr.replace(/&lt;br \/&gt;/g,'<br />'));
+	});
+});
+
+function openHelp(sTitle, sKey) {
+	var sUrl = "/geoportal/webhelp/index.jsp";
+	var sLang= "en";
+	var sVers= "1.2.2";
+	if (sKey) sUrl += "?cmd="+sKey;
+	if (sLang) {
+	  if (sKey) {
+	    sUrl += "&";
+	  } else {
+	    sUrl += "?";
+	  }
+	  sUrl += "lang="+sLang;
+	}
+	if (sVers) {
+	  if (sKey || sLang) {
+	    sUrl += "&";
+	  } else {
+	    sUrl += "?";
+	  }
+	  sUrl += "vers="+sVers;
+	}
+	var sOpt = "left=10,top=10,width=770,height=450";
+	sOpt += ",toolbar=0,location=0,directories=0,status=0,resizable=yes,scrollbars=yes";
+	var winHelp = window.open(sUrl,sTitle,sOpt);
+	winHelp.focus();
+}
+
+function mainOpenHelp() {
+	openHelp("GPT_Help", "toc");
+}
+
+function mainOpenInternalLink(oLink,sHref) {
+	if (oLink && oLink.href && sHref) {
+		oLink.href = "/geoportal/"+sHref;
+	}
+}
+
+function mainOpenPageHelp() {
+	openHelp("GPT_Context_Help", "catalog.search.resource.details");
+}
+// Global variable to be used for map viewer
+var mainGptMapViewer = new GptMapViewer(mainGptMvsUrl);
+
+/**
+ * Opens the map viewer
+ * @returns false always
+ */
+function mainOpenDefaultMapViewer() {
+	if(!GptUtils.exists(mainGptMapViewer) || !GptUtils.exists(mainGptMapViewer.openDefaultMap)) {
+		return false;
+	}
+	var win = mainGptMapViewer.openDefaultMap();
+	if(GptUtils.exists(win) && GptUtils.exists(win.focus)) {
+		win.focus();
+	}
+	return false;
+}
+
+</script>
+
+
+
+</head>
+<body>
+	<div id="gptMainWrap" style="position: static;">
+	   
+		<div id="gptTopBar">
+			<div id="gptSkip">
+				<ul>
+					<li><a href="#gptBody"><span id="txtSkipToContent">Preskoči na vsebino</span></a></li>
+				</ul>
+			</div>
+			<div id="gptTertiaryNavigation">
+				
+
+			</div>
+		</div>
+		
+		<div id="gptBanner">
+			
+
+
+
+
+
+<script type="text/javascript" src="/geoportal/gpt/GptCore.js"></script>
+<script type="text/javascript">	
+  GptCore.config["GptCore.serverContextPath"] = "/geoportal";
+  GptCore.config["GptCore.clientContextPath"] = "/geoportal";
+</script>  
+
+
+</script> 
+
+
+<div id="gptTitle">
+	Geoportal ARSO
+</div>
+
+
+<form id="frmTertiaryNavigation" name="frmTertiaryNavigation" method="post" action="/geoportal/catalog/search/resource/details.page;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="frmTertiaryNavigation" value="frmTertiaryNavigation" />
+
+<script type="text/javascript" src="/geoportal/javax.faces.resource/jsf.js.page?ln=javax.faces"></script>
+<a id="frmTertiaryNavigation:identityFeedback" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmTertiaryNavigation'),{'frmTertiaryNavigation:identityFeedback':'frmTertiaryNavigation:identityFeedback'},'');return false" class="">Pošljite nam povratne informacije</a><a id="frmTertiaryNavigation:contentAbout" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmTertiaryNavigation'),{'frmTertiaryNavigation:contentAbout':'frmTertiaryNavigation:contentAbout'},'');return false" class="">Več o ...</a><a id="frmTertiaryNavigation:openHelp" name="frmTertiaryNavigation:openHelp" href="#" onclick="javascript:mainOpenPageHelp()">Pomoč</a><span id="frmTertiaryNavigation:msgNonAuthenticatedUser"></span><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-4388113475223706890:-6633857877176821286" autocomplete="off" />
+</form>
+		</div>
+		<div style="clear:both"></div>
+		<div id="gptPrimaryNavigation">
+			
+
+
+
+
+
+<form id="frmPrimaryNavigation" name="frmPrimaryNavigation" method="post" action="/geoportal/catalog/search/resource/details.page;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="frmPrimaryNavigation" value="frmPrimaryNavigation" />
+<a id="frmPrimaryNavigation:mainHome" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmPrimaryNavigation'),{'frmPrimaryNavigation:mainHome':'frmPrimaryNavigation:mainHome'},'');return false" class="">Prva stran</a><a id="frmPrimaryNavigation:searchHome" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmPrimaryNavigation'),{'frmPrimaryNavigation:searchHome':'frmPrimaryNavigation:searchHome'},'');return false" class="">Išči  </a><a id="frmPrimaryNavigation:browse" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmPrimaryNavigation'),{'frmPrimaryNavigation:browse':'frmPrimaryNavigation:browse'},'');return false" class="">Brskanje</a><a id="frmPrimaryNavigation:quicklinkHome" href="#" onclick="mojarra.jsfcljs(document.getElementById('frmPrimaryNavigation'),{'frmPrimaryNavigation:quicklinkHome':'frmPrimaryNavigation:quicklinkHome'},'');return false" class="">Povezave</a><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-4388113475223706890:-6633857877176821286" autocomplete="off" />
+</form>
+		</div>
+		<div style="clear:both"></div>
+		<div id="gptBody">
+		
+			<div id="gptSecondaryNavigation">
+				
+
+
+
+
+
+
+<script>
+function rnpInit(){
+	var winUrl = window.location.href;
+	var element = document.getElementById("rnpDetails");
+	if(winUrl != null && winUrl.indexOf("catalog/search/resource/review.page") > 0){		
+		element = document.getElementById("rnpReview");
+	}else if(winUrl != null && winUrl.indexOf("catalog/search/resource/livedata-preview.page") > 0){
+		element = document.getElementById("rnpPreview");
+	}else if(winUrl != null && winUrl.indexOf("catalog/search/resource/details.page") > 0){
+		element = document.getElementById("rnpDetails");
+	}else if(winUrl != null && winUrl.indexOf("catalog/search/resource/relationships.page") > 0){
+		element = document.getElementById("rnpRelationships");
+	}
+
+	if(element != null) {
+		element.className = "current";
+	}
+ 	var hasRelationships = "true";
+	if(hasRelationships == true || hasRelationships == "true"){
+		 var elRelationships = dojo.byId("rnpRelationships");
+     if(elRelationships != null){       
+    	 elRelationships.style.display = "inline";
+     }
+	}
+	
+	var hasReview = "true";
+	if(hasReview == true || hasReview == "true"){
+		 var elReview = dojo.byId("rnpReview");
+     if(elReview != null){       
+    	 elReview.style.display = "inline";
+     }
+	}
+	
+	 var u = "/geoportal/rest/document?id=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D&f=json&showRelativeUrl=true";
+   if(u.length > 0){		     
+    dojo.xhrGet({
+      handleAs: "json",
+      preventCache: true,
+      url: u,
+      load: function(responseObject,ioArgs) {
+        var previewUrl = null;
+        var title = null;
+        if(responseObject != null && responseObject.records != null && responseObject.records.length ==1){
+        	title = responseObject.records[0].title;
+			var links = responseObject.records[0].links;
+			if(links != null){
+				for(var i =0; i< links.length; i++){
+					if(links[i].type != null && links[i].type.toLowerCase() == "preview"){
+						previewUrl = links[i].href; 
+					}
+				}
+			}  	
+        } 
+        var elPreview = dojo.byId("rnpPreview");
+        if(elPreview != null){
+            if(previewUrl == null){  
+            	elPreview.style.display = "none";          	
+            }else{
+            	elPreview.style.display = "inline";
+            	elPreview.href = previewUrl;            
+            }
+        }
+
+        var elXsltBased = dojo.byId("mdDetails:xsltBasedDetails");
+        if (elXsltBased != null) title = null;
+        
+        var elTitle = dojo.byId("cmPlPcCaption");
+        if(elTitle != null){
+            if(title == null){
+            	elTitle.style.display = "none";
+            }else{
+            	//elTitle.appendChild(document.createTextNode(title));
+            	elTitle.innerHTML = title;        
+            }
+        }
+      }
+    });  
+  }
+}
+if (typeof(dojo) != 'undefined') {
+	  dojo.addOnLoad(rnpInit);
+}
+</script>
+
+	<a id="rnpDetails" href="/geoportal/catalog/search/resource/details.page?uuid=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D">Podrobnosti</a>
+	<a id="rnpReview" style="display:none" href="/geoportal/catalog/search/resource/review.page?uuid=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D">Pregled</a>
+	<a id="rnpRelationships" style="display:none" href="/geoportal/catalog/search/resource/relationships.page?uuid=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D">Odnosi</a>
+	<a id="rnpPreview" style="display:none" href="">Predogled</a>	
+
+			</div>
+  
+			<h1><span id="cmPlPcCaption">.</span></h1>
+
+  
+  <table id="cmPlPgdNavMenuAndMainBody" class="pageContent" cellpadding="0" cellspacing="0" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><table id="cmPlPgdPageContentBody" class="pageContentRight" cellpadding="0" cellspacing="0" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><span id="cmPlPgpGptMessages"><div id="cmPlMsgsPageMessages"></div></span></td>
+</tr>
+<tr>
+<td><table id="cmPlPgdPageBody" class="pageBody" cellpadding="0" cellspacing="0" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><span id="cmPlPgpPageBody">
+          
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var gptMapConfig = new GptMapConfig();
+  gptMapConfig.mapServiceURL = "http://server.arcgisonline.com/ArcGIS/rest/services/ESRI_Imagery_World_2D/MapServer";
+  gptMapConfig.mapServiceType = "dynamic";
+  gptMapConfig.geometryServiceURL = "http://sampleserver3.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer";
+  gptMapConfig.locatorURL = "http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer";
+  gptMapConfig.locatorSingleFieldParameter = "city";
+  gptMapConfig.locatorGraphicURL = "/geoportal/catalog/images/pushpin_red.gif";
+  gptMapConfig.mapVisibleLayers = "[]";
+</script>
+
+
+<form id="mdDetails" name="mdDetails" method="post" action="/geoportal/catalog/search/resource/details.page;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" class="mdDetails" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="mdDetails" value="mdDetails" />
+
+
+<script type="text/javascript">
+
+function MddMap() {
+  var _gptMap = null;
+  var _gptInpEnv = null;
+  
+  this.initialize = function initialize() {
+    var config = gptMapConfig;
+    config.mapElementId = "interactiveMap";
+    config.mapToolbarId = "mdDetails:mapToolbar";
+        
+    var elForm = mddFindForm();
+    if ((elForm != null) && (typeof(mdeEnvelopeIds) != 'undefined') && (mdeEnvelopeIds != null)) {
+      var sPfx = elForm.id+":";
+      config.inputEnvelopeXMinId = sPfx+mdeEnvelopeIds[0];
+      config.inputEnvelopeYMinId = sPfx+mdeEnvelopeIds[1];
+      config.inputEnvelopeXMaxId = sPfx+mdeEnvelopeIds[2];
+      config.inputEnvelopeYMaxId = sPfx+mdeEnvelopeIds[3];
+      var el = document.getElementById(config.inputEnvelopeXMinId);
+      if (el != null) el.value = el.innerHTML;
+      el = document.getElementById(config.inputEnvelopeYMinId);
+      if (el != null) el.value = el.innerHTML;
+      el = document.getElementById(config.inputEnvelopeXMaxId);
+      if (el != null) el.value = el.innerHTML;
+      el = document.getElementById(config.inputEnvelopeYMaxId);
+      if (el != null) el.value = el.innerHTML;
+    }
+      
+    _gptMap = new GptMap();
+    dojo.connect(_gptMap,"onMapLoaded",this,"onMapLoaded");
+
+    _gptInpEnv = new GptInputEnvelope();
+    _gptInpEnv.initialize(config,_gptMap);
+
+    _gptMap.initialize(config);
+  }
+
+  this.onMapLoaded = function() {
+      if (_gptInpEnv != null) {
+        _gptInpEnv.highlightInputEnvelope();
+        setTimeout(dojo.hitch(_gptInpEnv,"zoomToInputEnvelope"),1000);
+        _gptMap.getAgsMap().disableMapNavigation();
+        _gptMap.getAgsMap().disablePan();
+        _gptMap.getAgsMap().disableClickRecenter();
+        _gptMap.getAgsMap().disableDoubleClickZoom();
+        _gptMap.getAgsMap().disableRubberBandZoom();
+        _gptMap.getAgsMap().disableScrollWheelZoom();
+        _gptMap.getAgsMap().disableShiftDoubleClickZoom();
+        _gptMap.getAgsMap().hidePanArrows();
+        _gptMap.getAgsMap().hideZoomSlider();
+      }
+  }
+  
+  this.reposition = function reposition() {
+    if (_gptMap != null) _gptMap.reposition();
+  }
+};
+
+
+function mddFindForm(sBaseName) {
+  var elForm = null;
+  var aForms = document.getElementsByTagName("form");
+  if (aForms != null) {
+    if (sBaseName == null) sBaseName = "mdDetails";
+    for (var i=0;i<aForms.length;i++) {
+      var el = aForms[i];
+      if (el && el.id && (el.id.indexOf(sBaseName) != -1)) {
+        elForm = el;
+        break;
+      }
+    }
+  }
+  return elForm;
+};
+
+
+var mddMap = new MddMap();;
+if (typeof(dojo) != 'undefined') {
+  dojo.addOnLoad(mddMapInit);
+}
+
+function mddMapInit() {
+  var toolbar = dojo.byId("mdDetails:mapToolbar");
+  if (toolbar!=null) toolbar.style.display="none";
+  var elMap = document.getElementById("interactiveMap");
+  if (elMap != null) mddMap.initialize();
+  dojo.connect(window,"onresize",mddMap,"reposition");
+};
+
+
+function mddOnSectionClicked(sSectionId) {
+  var elForm = mddFindForm();
+  if (elForm != null) {
+    var bDisplay = true;
+    var sFolder = "/geoportal/catalog/images/";
+    var sSrc = sFolder+"section_open.gif";
+    var elImg = document.getElementById(elForm.id+":"+sSectionId+"-img");
+    if (elImg != null) {
+      if (elImg.src.indexOf("section_open.gif") != -1) {
+        sSrc = sFolder+"section_closed.gif";
+        bDisplay = false;
+      }
+      elImg.src = sSrc;
+      var elChk = document.getElementById(elForm.id+":"+sSectionId+"-chk");
+      if (elChk != null) elChk.checked = bDisplay;
+    }
+    var el = document.getElementById(elForm.id+":"+sSectionId+"-body");
+
+	if (el != null) {
+	  if (bDisplay) el.style.display = "block"; else el.style.display = "none";
+	  mddMap.reposition();
+	}      
+  }
+}
+
+</script>
+
+
+<script>var mdeEnvelopeIds = new Array('envelope_west','envelope_south','envelope_east','envelope_north');</script><span class="section"><table class="sectionHeader" onclick="mddOnSectionClicked('identification')" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><input id="mdDetails:identification-chk" type="checkbox" name="mdDetails:identification-chk" checked="checked" style="display:none;" /></td>
+<td><img id="mdDetails:identification-img" src="/geoportal/catalog/images/section_open.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" /></td>
+<td><span class="sectionCaption">Osnovne informacije</span></td>
+</tr>
+</tbody>
+</table>
+<table id="mdDetails:identification-body" class="sectionBody" style="display:block;">
+<tbody>
+<tr>
+<td><table id="mdDetails:identification-params" class="parameters" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td class="parameterLabel">Naslov:</td>
+<td class="parameterValue"><span id="mdDetails:identification_title">Aglomeracije (območja poselitve)</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Namen:</td>
+<td class="parameterValue"><span id="mdDetails:description_purpose">Podatkovni niz prikazuje Aglomeracije (območja poselitve) v R Sloveniji glede na Pravilnik o odvajanju in čiščenju komunalne odpadne in padavinske vode, Ur.l. RS st. 105/2002. Prostorska baza je predstavljena z združenimi celicami 100x100m. Analiza gostote prebivalcev v celotni aglomeraciji in maksimalna gostota v celotni aglomeraciji glede na celice 100x100m za namene strateškega načrtovanja investicij v infrastrukturo odvajanja in čiščenja odpadne vode. Aglomeracije so tako naselja ali deli naselji, ki po določilih Operativnega programa odvajanja in čiščenja komunalnih odpadnih vod morajo biti opremljena z javno kanalizacijo. Od velikosti Aglomeracije je odvisno do kdaj je potrebno, znotraj nje, do določenega obdobja zagotoviti odvajanje in čiščenje komunalnih odpadnih vod po standardih, ki jih določa Evropska direktiva &quot;Council Directive 91/271/EEC of 21 May 1991 concerning urban waste-water treatment&quot; ter naša zakonodaja.</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Vir podatka:</td>
+<td class="parameterValue"><span id="mdDetails:citation_credit">MOP - Agencija RS za okolje.</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Omejitev uporabe zbirke:</td>
+<td class="parameterValue"><span id="mdDetails:constraint_resourceUseLimitation">Ni omejitev.</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</span><span class="section"><table class="sectionHeader" onclick="mddOnSectionClicked('theme')" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><input id="mdDetails:theme-chk" type="checkbox" name="mdDetails:theme-chk" checked="checked" style="display:none;" /></td>
+<td><img id="mdDetails:theme-img" src="/geoportal/catalog/images/section_open.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" /></td>
+<td><span class="sectionCaption">Tematska skupina</span></td>
+</tr>
+</tbody>
+</table>
+<table id="mdDetails:theme-body" class="sectionBody" style="display:block;">
+<tbody>
+<tr>
+<td><table id="mdDetails:theme-params" class="parameters" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td class="parameterLabel">Tema:</td>
+<td class="parameterValue"><span id="mdDetails:theme_topics">Okolje, Zdravstvo, Komunala/Komunikacije</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</span><span class="section"><table class="sectionHeader" onclick="mddOnSectionClicked('general')" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><input id="mdDetails:general-chk" type="checkbox" name="mdDetails:general-chk" checked="checked" style="display:none;" /></td>
+<td><img id="mdDetails:general-img" src="/geoportal/catalog/images/section_open.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" /></td>
+<td><span class="sectionCaption">Metapodatkovne informacije</span></td>
+</tr>
+</tbody>
+</table>
+<table id="mdDetails:general-body" class="sectionBody" style="display:block;">
+<tbody>
+<tr>
+<td><table id="mdDetails:general-params" class="parameters" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td class="parameterLabel">Datum izdelave metapodatka:</td>
+<td class="parameterValue"><span id="mdDetails:general_datestamp">2011-04-07</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</span><span class="section"><table class="sectionHeader" onclick="mddOnSectionClicked('envelope')" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><input id="mdDetails:envelope-chk" type="checkbox" name="mdDetails:envelope-chk" checked="checked" style="display:none;" /></td>
+<td><img id="mdDetails:envelope-img" src="/geoportal/catalog/images/section_open.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" /></td>
+<td><span class="sectionCaption">Meja območja zbirke podatkov</span></td>
+</tr>
+</tbody>
+</table>
+<table id="mdDetails:envelope-body" class="sectionBody" style="display:block;">
+<tbody>
+<tr>
+<td><span class="section"><table class="sectionHeader" onclick="mddOnSectionClicked('national')" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><input id="mdDetails:national-chk" type="checkbox" name="mdDetails:national-chk" checked="checked" style="display:none;" /></td>
+<td><img id="mdDetails:national-img" src="/geoportal/catalog/images/section_open.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" /></td>
+<td><span class="sectionCaption">Meja območja v metrih (Gauss Krueger)</span></td>
+</tr>
+</tbody>
+</table>
+<table id="mdDetails:national-body" class="sectionBody" style="display:block;">
+<tbody>
+<tr>
+<td><table id="mdDetails:national-params" class="parameters" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td class="parameterLabel">Zahodna meja :</td>
+<td class="parameterValue"><span id="mdDetails:envelope_national_west">378900.005432</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Južna meja :</td>
+<td class="parameterValue"><span id="mdDetails:envelope_national_south">32799.981691</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Vzhodna meja :</td>
+<td class="parameterValue"><span id="mdDetails:envelope_national_east">617500.008275</span></td>
+</tr>
+<tr>
+<td class="parameterLabel">Severna meja :</td>
+<td class="parameterValue"><span id="mdDetails:envelope_national_north">188999.980492</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</span></td>
+</tr>
+<tr>
+<td><span class=""><table id="mdDetails:envelope_map_container-body" class="" style="display:block;">
+<tbody>
+<tr>
+<td><table id="mdDetails:envelope_map_container-params" class="parameters" summary="Ta tabela je namenjena ustvarjanju.">
+<tbody>
+<tr>
+<td><span id="mdDetails:mapToolbar" class="mapToolbar"><img id="mdDetails:mapButton-zoomToInputEnvelope" src="/geoportal/catalog/images/btn-zoomToInputEnvelope-off.gif;jsessionid=41A6AE9D59B209F162BF67D2BF435C27" alt="Pogled na obseg metapodatka" title="Pogled na obseg metapodatka" /></span><div style="margin-top:1px; border:1px solid #000000; width:600px; height:300px;"><div id='interactiveMap' style="width:600px; height:300px; cursor:hand; cursor:pointer;"></div></div></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</span></td>
+</tr>
+</tbody>
+</table>
+</span><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="-4388113475223706890:-6633857877176821286" autocomplete="off" />
+</form>
+  <iframe class="section" src="/geoportal/rest/document?f=html&id=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D" width="100%" scrolling="no" frameborder="0"></iframe>
+  <span class="note">/geoportal/rest/document?f=html&id=%7B18C0D3A9-2FB9-496E-BC24-DE9196E4F1A2%7D</span>
+</span></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+      
+		</div>
+		<div style="clear:both"></div>
+		<div id="gptFooter">
+			
+
+
+
+<span id="gptFooterStatement">Ta Geoportal je bil narejen s pomočjo ArcGIS Server Geoportal Extension 10. Prosimo, če preberete: <a id="ftPrivacy" href="#" onclick="javascript:mainOpenInternalLink(this,'catalog/content/privacy.page')">Izjava o omejitvi odgovornosti pri uporabi prostorskih podatkov ARSO</a> ali <a id="ftFeedback" href="#" onclick="javascript:mainOpenInternalLink(this,'catalog/identity/feedback.page')">Nam pišite</a>.</span>
+		</div>
+		
+	</div> <!-- gptMainWrap -->
+ 
+</body>
+</html>
+

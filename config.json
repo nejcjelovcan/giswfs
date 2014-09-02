@@ -1,0 +1,5 @@
+{
+	"cache.backend": "dogpile.cache.dbm",
+    "cache.arguments.filename": "cache.dbm",
+    "scraper.files": "files/"
+}
